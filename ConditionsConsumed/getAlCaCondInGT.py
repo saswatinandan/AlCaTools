@@ -29,8 +29,13 @@ def checkTagInFile(tag, logFile):
     else:
         return ""
 
+def escape_wikiwords(text):
+    # Use a regular expression to find words starting with a capital letter
+    return re.sub(r'\b([A-Z][a-zA-Z0-9]*)', r'!\1', text)
+
 def getOneRow(tag, logFiles):
-    rowName = "|" +tag.strip()
+    escaped_tag = escape_wikiwords(tag.strip())
+    rowName = "|" + escaped_tag
     for file_ in logFiles:
         checkTagInFile_ = checkTagInFile(tag, file_)
         rowName = rowName + " | " + checkTagInFile_
