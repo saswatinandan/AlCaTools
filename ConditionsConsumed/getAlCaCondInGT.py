@@ -64,6 +64,8 @@ def printAllRow(tagFile, logFiles, outForTwiki, tableTitle):
         #print (getOneRow_)
         outForTwiki.write(getOneRow_)
 
+    outForTwiki.close()
+
 def main():
     
     #Default input
