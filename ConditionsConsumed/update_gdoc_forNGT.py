@@ -20,12 +20,11 @@ with open("test.csv", "r") as f:
      for idx, rows in enumerate(reader):
          if idx ==0:
              hlt_index = rows.index('Consumed at HLT (from documentation)')
-             l1_index = rows.index('Consumed at L1 (from documentation)')
+             l1_index = rows.index('Consumed at L1 repack (from documentation)')
              lists.append(rows)
              continue
          found = False
          for line in lines:
-             check_line = rows[0] + ' / ' + rows[1] if rows[1] != '-' else rows[0]
              if rows[1] != '-':
                  if rows[0] + ' / ' + rows[1] in line or rows[0] + ' / !' + rows[1] in line:
                      found = True
