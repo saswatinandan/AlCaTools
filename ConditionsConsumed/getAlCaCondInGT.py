@@ -52,8 +52,11 @@ def printAllRow(tagFile, logFiles, outForTwiki, tableTitle):
                 if re.search(r' / ', newl):
                     if newl not in unique_tags:
                       #print(newl)
-                      outfile.write(newl+'\n')
                       unique_tags.append(newl)
+
+    unique_tags = sorted(unique_tags)
+    for tag in unique_tags:
+        outfile.write(tag+'\n')
     outfile.close()
     outForTwiki.write(tableTitle)
     for tag in open(tagFile):
